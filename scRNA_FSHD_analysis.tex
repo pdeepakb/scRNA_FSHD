@@ -1,0 +1,933 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Single-cell RNA Analysis of FSHD Muscle Biopsy Samples},
+  pdfauthor={Analyst},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Single-cell RNA Analysis of FSHD Muscle Biopsy Samples}
+\author{Analyst}
+\date{2025-02-23}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\section{Introduction}\label{introduction}
+
+This document outlines a comprehensive analysis of single-cell RNA
+sequencing (scRNA-seq) data obtained from muscle biopsy-derived myocyte
+cultures. The study includes samples from FSHD patients (with FSHD1 and
+FSHD2 subtypes) and healthy controls. Our analysis includes data
+pre-processing, normalization, batch effect correction, clustering,
+differential expression analysis, pathway enrichment, and cell type
+annotation.
+
+\section{1. Setting Up the
+Environment}\label{setting-up-the-environment}
+
+\subsubsection{1.1 Clear the Environment and Set
+Options}\label{clear-the-environment-and-set-options}
+
+We start by clearing the R environment to avoid any conflicts with
+existing objects and then set options to avoid truncated outputs and
+scientific notation.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Clear all objects including hidden ones}
+\FunctionTok{rm}\NormalTok{(}\AttributeTok{list =} \FunctionTok{ls}\NormalTok{(}\AttributeTok{all.names =} \ConstantTok{TRUE}\NormalTok{))}
+\CommentTok{\# Free up memory}
+\FunctionTok{gc}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##           used (Mb) gc trigger (Mb) limit (Mb) max used (Mb)
+## Ncells  578608 31.0    1303045 69.6         NA   700240 37.4
+## Vcells 1089659  8.4    8388608 64.0      32768  1963325 15.0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Set options to avoid truncated output and scientific notation}
+\FunctionTok{options}\NormalTok{(}\AttributeTok{max.print =}\NormalTok{ .Machine}\SpecialCharTok{$}\NormalTok{integer.max, }\AttributeTok{scipen =} \DecValTok{999}\NormalTok{, }\AttributeTok{stringsAsFactors =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{dplyr.summarise.inform =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{future.globals.maxSize =} \DecValTok{12} \SpecialCharTok{*} \DecValTok{1024}\SpecialCharTok{\^{}}\DecValTok{3}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{1.2 Load Required
+Libraries}\label{load-required-libraries}
+
+Load the essential libraries for scRNA-seq analysis, data manipulation,
+visualization, normalization, batch effect correction, and cell type
+annotation.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(Seurat)         }\CommentTok{\# For single{-}cell analysis}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: SeuratObject
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: sp
+\end{verbatim}
+
+\begin{verbatim}
+## 'SeuratObject' was built under R 4.4.0 but the current version is
+## 4.4.2; it is recomended that you reinstall 'SeuratObject' as the ABI
+## for R may have changed
+\end{verbatim}
+
+\begin{verbatim}
+## 'SeuratObject' was built with package 'Matrix' 1.7.0 but the current
+## version is 1.7.2; it is recomended that you reinstall 'SeuratObject' as
+## the ABI for 'Matrix' may have changed
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'SeuratObject'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, t
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)      }\CommentTok{\# For data manipulation and plotting}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## -- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --
+## v dplyr     1.1.4     v readr     2.1.5
+## v forcats   1.0.0     v stringr   1.5.1
+## v ggplot2   3.5.1     v tibble    3.2.1
+## v lubridate 1.9.4     v tidyr     1.3.1
+## v purrr     1.0.4
+\end{verbatim}
+
+\begin{verbatim}
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+## i Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(Matrix)         }\CommentTok{\# For handling sparse matrices}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'Matrix'
+## 
+## The following objects are masked from 'package:tidyr':
+## 
+##     expand, pack, unpack
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(SingleR)        }\CommentTok{\# For automated cell type annotation}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: SummarizedExperiment
+## Loading required package: MatrixGenerics
+## Loading required package: matrixStats
+## 
+## Attaching package: 'matrixStats'
+## 
+## The following object is masked from 'package:dplyr':
+## 
+##     count
+## 
+## 
+## Attaching package: 'MatrixGenerics'
+## 
+## The following objects are masked from 'package:matrixStats':
+## 
+##     colAlls, colAnyNAs, colAnys, colAvgsPerRowSet, colCollapse,
+##     colCounts, colCummaxs, colCummins, colCumprods, colCumsums,
+##     colDiffs, colIQRDiffs, colIQRs, colLogSumExps, colMadDiffs,
+##     colMads, colMaxs, colMeans2, colMedians, colMins, colOrderStats,
+##     colProds, colQuantiles, colRanges, colRanks, colSdDiffs, colSds,
+##     colSums2, colTabulates, colVarDiffs, colVars, colWeightedMads,
+##     colWeightedMeans, colWeightedMedians, colWeightedSds,
+##     colWeightedVars, rowAlls, rowAnyNAs, rowAnys, rowAvgsPerColSet,
+##     rowCollapse, rowCounts, rowCummaxs, rowCummins, rowCumprods,
+##     rowCumsums, rowDiffs, rowIQRDiffs, rowIQRs, rowLogSumExps,
+##     rowMadDiffs, rowMads, rowMaxs, rowMeans2, rowMedians, rowMins,
+##     rowOrderStats, rowProds, rowQuantiles, rowRanges, rowRanks,
+##     rowSdDiffs, rowSds, rowSums2, rowTabulates, rowVarDiffs, rowVars,
+##     rowWeightedMads, rowWeightedMeans, rowWeightedMedians,
+##     rowWeightedSds, rowWeightedVars
+## 
+## Loading required package: GenomicRanges
+## Loading required package: stats4
+## Loading required package: BiocGenerics
+## 
+## Attaching package: 'BiocGenerics'
+## 
+## The following objects are masked from 'package:lubridate':
+## 
+##     intersect, setdiff, union
+## 
+## The following objects are masked from 'package:dplyr':
+## 
+##     combine, intersect, setdiff, union
+## 
+## The following object is masked from 'package:SeuratObject':
+## 
+##     intersect
+## 
+## The following objects are masked from 'package:stats':
+## 
+##     IQR, mad, sd, var, xtabs
+## 
+## The following objects are masked from 'package:base':
+## 
+##     anyDuplicated, aperm, append, as.data.frame, basename, cbind,
+##     colnames, dirname, do.call, duplicated, eval, evalq, Filter, Find,
+##     get, grep, grepl, intersect, is.unsorted, lapply, Map, mapply,
+##     match, mget, order, paste, pmax, pmax.int, pmin, pmin.int,
+##     Position, rank, rbind, Reduce, rownames, sapply, saveRDS, setdiff,
+##     table, tapply, union, unique, unsplit, which.max, which.min
+## 
+## Loading required package: S4Vectors
+## 
+## Attaching package: 'S4Vectors'
+## 
+## The following objects are masked from 'package:Matrix':
+## 
+##     expand, unname
+## 
+## The following objects are masked from 'package:lubridate':
+## 
+##     second, second<-
+## 
+## The following objects are masked from 'package:dplyr':
+## 
+##     first, rename
+## 
+## The following object is masked from 'package:tidyr':
+## 
+##     expand
+## 
+## The following object is masked from 'package:utils':
+## 
+##     findMatches
+## 
+## The following objects are masked from 'package:base':
+## 
+##     expand.grid, I, unname
+## 
+## Loading required package: IRanges
+## 
+## Attaching package: 'IRanges'
+## 
+## The following object is masked from 'package:lubridate':
+## 
+##     %within%
+## 
+## The following objects are masked from 'package:dplyr':
+## 
+##     collapse, desc, slice
+## 
+## The following object is masked from 'package:purrr':
+## 
+##     reduce
+## 
+## The following object is masked from 'package:sp':
+## 
+##     %over%
+## 
+## Loading required package: GenomeInfoDb
+## Loading required package: Biobase
+## Welcome to Bioconductor
+## 
+##     Vignettes contain introductory material; view with
+##     'browseVignettes()'. To cite Bioconductor, see
+##     'citation("Biobase")', and for packages 'citation("pkgname")'.
+## 
+## 
+## Attaching package: 'Biobase'
+## 
+## The following object is masked from 'package:MatrixGenerics':
+## 
+##     rowMedians
+## 
+## The following objects are masked from 'package:matrixStats':
+## 
+##     anyMissing, rowMedians
+## 
+## 
+## Attaching package: 'SummarizedExperiment'
+## 
+## The following object is masked from 'package:Seurat':
+## 
+##     Assays
+## 
+## The following object is masked from 'package:SeuratObject':
+## 
+##     Assays
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(celldex)        }\CommentTok{\# Provides reference datasets for SingleR}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'celldex'
+## 
+## The following objects are masked from 'package:SingleR':
+## 
+##     BlueprintEncodeData, DatabaseImmuneCellExpressionData,
+##     HumanPrimaryCellAtlasData, ImmGenData, MonacoImmuneData,
+##     MouseRNAseqData, NovershternHematopoieticData
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(clusterProfiler) }\CommentTok{\# For gene set enrichment analysis}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## clusterProfiler v4.14.4 Learn more at https://yulab-smu.top/contribution-knowledge-mining/
+## 
+## Please cite:
+## 
+## G Yu. Thirteen years of clusterProfiler. The Innovation. 2024,
+## 5(6):100722
+## 
+## Attaching package: 'clusterProfiler'
+## 
+## The following object is masked from 'package:IRanges':
+## 
+##     slice
+## 
+## The following object is masked from 'package:S4Vectors':
+## 
+##     rename
+## 
+## The following object is masked from 'package:purrr':
+## 
+##     simplify
+## 
+## The following object is masked from 'package:stats':
+## 
+##     filter
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(org.Hs.eg.db)   }\CommentTok{\# Annotation package for human genes}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: AnnotationDbi
+## 
+## Attaching package: 'AnnotationDbi'
+## 
+## The following object is masked from 'package:clusterProfiler':
+## 
+##     select
+## 
+## The following object is masked from 'package:dplyr':
+## 
+##     select
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(sctransform)    }\CommentTok{\# For advanced normalization methods}
+\FunctionTok{library}\NormalTok{(harmony)        }\CommentTok{\# For batch effect correction}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: Rcpp
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(viridis)        }\CommentTok{\# For colorblind{-}friendly palettes}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: viridisLite
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(patchwork)      }\CommentTok{\# For combining plots}
+\FunctionTok{library}\NormalTok{(biomaRt)        }\CommentTok{\# For gene annotation conversion}
+\end{Highlighting}
+\end{Shaded}
+
+\section{2. Data Loading and Initial
+Processing}\label{data-loading-and-initial-processing}
+
+\subsubsection{2.1 Annotate Genes}\label{annotate-genes}
+
+We create a function \texttt{annotate\_genes} to convert Ensembl gene
+IDs to HGNC gene symbols using the biomaRt package. This ensures that
+downstream analyses use recognizable gene symbols.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{annotate\_genes }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(counts) \{}
+  \FunctionTok{library}\NormalTok{(biomaRt)}
+  
+  \CommentTok{\# Connect to the Ensembl database}
+\NormalTok{  ensembl }\OtherTok{\textless{}{-}} \FunctionTok{useMart}\NormalTok{(}\StringTok{"ensembl"}\NormalTok{, }\AttributeTok{dataset =} \StringTok{"hsapiens\_gene\_ensembl"}\NormalTok{)}
+  
+  \CommentTok{\# Extract Ensembl IDs from row names of the count matrix}
+\NormalTok{  ensembl\_ids }\OtherTok{\textless{}{-}} \FunctionTok{rownames}\NormalTok{(counts)}
+  
+  \CommentTok{\# Retrieve the corresponding HGNC symbols}
+\NormalTok{  gene\_map }\OtherTok{\textless{}{-}} \FunctionTok{getBM}\NormalTok{(}\AttributeTok{attributes =} \FunctionTok{c}\NormalTok{(}\StringTok{"ensembl\_gene\_id"}\NormalTok{, }\StringTok{"hgnc\_symbol"}\NormalTok{),}
+                    \AttributeTok{filters =} \StringTok{"ensembl\_gene\_id"}\NormalTok{,}
+                    \AttributeTok{values =}\NormalTok{ ensembl\_ids,}
+                    \AttributeTok{mart =}\NormalTok{ ensembl)}
+  
+  \CommentTok{\# Replace empty gene symbols with NA}
+\NormalTok{  gene\_map}\SpecialCharTok{$}\NormalTok{hgnc\_symbol[gene\_map}\SpecialCharTok{$}\NormalTok{hgnc\_symbol }\SpecialCharTok{==} \StringTok{""}\NormalTok{] }\OtherTok{\textless{}{-}} \ConstantTok{NA}
+  
+  \CommentTok{\# Remove duplicate Ensembl IDs for a unique mapping}
+\NormalTok{  gene\_map }\OtherTok{\textless{}{-}}\NormalTok{ gene\_map[}\SpecialCharTok{!}\FunctionTok{duplicated}\NormalTok{(gene\_map}\SpecialCharTok{$}\NormalTok{ensembl\_gene\_id), ]}
+  
+  \CommentTok{\# Handle duplicate gene symbols by appending Ensembl ID if needed}
+\NormalTok{  gene\_map}\SpecialCharTok{$}\NormalTok{hgnc\_symbol }\OtherTok{\textless{}{-}} \FunctionTok{make.unique}\NormalTok{(}\FunctionTok{ifelse}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(gene\_map}\SpecialCharTok{$}\NormalTok{hgnc\_symbol), }
+\NormalTok{                                             gene\_map}\SpecialCharTok{$}\NormalTok{ensembl\_gene\_id, }
+\NormalTok{                                             gene\_map}\SpecialCharTok{$}\NormalTok{hgnc\_symbol))}
+  
+  \CommentTok{\# Create a named vector for mapping Ensembl IDs to gene symbols}
+\NormalTok{  gene\_map\_named }\OtherTok{\textless{}{-}} \FunctionTok{setNames}\NormalTok{(gene\_map}\SpecialCharTok{$}\NormalTok{hgnc\_symbol, gene\_map}\SpecialCharTok{$}\NormalTok{ensembl\_gene\_id)}
+  
+  \CommentTok{\# Replace row names with gene symbols where available}
+  \FunctionTok{rownames}\NormalTok{(counts) }\OtherTok{\textless{}{-}} \FunctionTok{ifelse}\NormalTok{(}\FunctionTok{rownames}\NormalTok{(counts) }\SpecialCharTok{\%in\%} \FunctionTok{names}\NormalTok{(gene\_map\_named),}
+\NormalTok{                             gene\_map\_named[}\FunctionTok{rownames}\NormalTok{(counts)],}
+                             \FunctionTok{rownames}\NormalTok{(counts))}
+  
+  \CommentTok{\# Ensure unique row names to avoid duplication issues}
+  \FunctionTok{rownames}\NormalTok{(counts) }\OtherTok{\textless{}{-}} \FunctionTok{make.unique}\NormalTok{(}\FunctionTok{rownames}\NormalTok{(counts))}
+  
+  \FunctionTok{return}\NormalTok{(counts)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{2.2 Create Seurat Objects}\label{create-seurat-objects}
+
+The function \texttt{create\_seurat\_object} reads the count data from a
+file, annotates the genes, and then creates a Seurat object with initial
+filtering. Metadata for sample and condition is also added.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{create\_seurat\_object }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(file\_path, sample\_name) \{}
+  \CommentTok{\# Read the count matrix data from a text file (.txt.gz)}
+\NormalTok{  counts }\OtherTok{\textless{}{-}} \FunctionTok{read.table}\NormalTok{(file\_path, }\AttributeTok{header =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{sep =} \StringTok{"}\SpecialCharTok{\textbackslash{}t}\StringTok{"}\NormalTok{, }\AttributeTok{row.names =} \DecValTok{1}\NormalTok{, }\AttributeTok{check.names =} \ConstantTok{FALSE}\NormalTok{)}
+  
+  \CommentTok{\# Annotate gene names using the custom function}
+\NormalTok{  counts }\OtherTok{\textless{}{-}} \FunctionTok{annotate\_genes}\NormalTok{(counts)}
+  
+  \CommentTok{\# Create a Seurat object with filters:}
+  \CommentTok{\# {-} Genes must be detected in at least 3 cells}
+  \CommentTok{\# {-} Cells must have at least 200 detected genes}
+\NormalTok{  seurat\_obj }\OtherTok{\textless{}{-}} \FunctionTok{CreateSeuratObject}\NormalTok{(}
+    \AttributeTok{counts =}\NormalTok{ counts,}
+    \AttributeTok{project =}\NormalTok{ sample\_name,}
+    \AttributeTok{min.cells =} \DecValTok{3}\NormalTok{,}
+    \AttributeTok{min.features =} \DecValTok{200}
+\NormalTok{  )}
+  
+  \CommentTok{\# Add metadata: sample name and condition (FSHD1, FSHD2, or Control)}
+\NormalTok{  seurat\_obj}\SpecialCharTok{$}\NormalTok{sample }\OtherTok{\textless{}{-}}\NormalTok{ sample\_name}
+\NormalTok{  seurat\_obj}\SpecialCharTok{$}\NormalTok{condition }\OtherTok{\textless{}{-}} \FunctionTok{ifelse}\NormalTok{(}\FunctionTok{grepl}\NormalTok{(}\StringTok{"FSHD"}\NormalTok{, sample\_name), }\StringTok{"FSHD"}\NormalTok{, }\StringTok{"Control"}\NormalTok{)}
+  \FunctionTok{return}\NormalTok{(seurat\_obj)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{2.3 Merge Samples}\label{merge-samples}
+
+Read count data from multiple files, create Seurat objects for each
+sample, and merge them into one combined Seurat object for the complete
+analysis.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# List all sample files from the directory (adjust the path as needed)}
+\NormalTok{sample\_files }\OtherTok{\textless{}{-}} \FunctionTok{list.files}\NormalTok{(}\StringTok{"GSE122873\_RAW"}\NormalTok{, }\AttributeTok{full.names =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{pattern =} \StringTok{"*.txt.gz"}\NormalTok{)}
+
+\CommentTok{\# Define sample names corresponding to the files}
+\NormalTok{sample\_names }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"FSHD1\_1"}\NormalTok{, }\StringTok{"FSHD1\_2"}\NormalTok{, }\StringTok{"FSHD2\_1"}\NormalTok{, }\StringTok{"FSHD2\_2"}\NormalTok{, }\StringTok{"Control\_1"}\NormalTok{, }\StringTok{"Control\_2"}\NormalTok{)}
+
+\CommentTok{\# Create a list of Seurat objects for each sample using mapply}
+\NormalTok{seurat\_objects }\OtherTok{\textless{}{-}} \FunctionTok{mapply}\NormalTok{(create\_seurat\_object, }
+\NormalTok{                         sample\_files, }
+\NormalTok{                         sample\_names,}
+                         \AttributeTok{SIMPLIFY =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Data is of class data.frame. Coercing to dgCMatrix.
+## Warning: Data is of class data.frame. Coercing to dgCMatrix.
+## Warning: Data is of class data.frame. Coercing to dgCMatrix.
+## Warning: Data is of class data.frame. Coercing to dgCMatrix.
+## Warning: Data is of class data.frame. Coercing to dgCMatrix.
+## Warning: Data is of class data.frame. Coercing to dgCMatrix.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Merge the individual Seurat objects into a single Seurat object}
+\NormalTok{merged\_seurat }\OtherTok{\textless{}{-}} \FunctionTok{merge}\NormalTok{(seurat\_objects[[}\DecValTok{1}\NormalTok{]], }
+                       \AttributeTok{y =}\NormalTok{ seurat\_objects[}\DecValTok{2}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(seurat\_objects)])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Some cell names are duplicated across objects provided. Renaming to
+## enforce unique cell names.
+\end{verbatim}
+
+\section{3. Quality Control and
+Filtering}\label{quality-control-and-filtering}
+
+\subsubsection{3.1 Calculate Mitochondrial Percentage and Filter
+Cells}\label{calculate-mitochondrial-percentage-and-filter-cells}
+
+We calculate the mitochondrial gene percentage for each cell and remove
+low-quality cells based on gene detection count and mitochondrial
+content.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Calculate the percentage of mitochondrial gene expression}
+\NormalTok{merged\_seurat}\SpecialCharTok{$}\NormalTok{percent.mt }\OtherTok{\textless{}{-}} \FunctionTok{PercentageFeatureSet}\NormalTok{(merged\_seurat, }\AttributeTok{pattern =} \StringTok{"\^{}MT{-}"}\NormalTok{)}
+
+\CommentTok{\# Filter cells based on:}
+\CommentTok{\# {-} More than 200 features (genes) and fewer than 6000 features}
+\CommentTok{\# {-} Less than 15\% mitochondrial gene expression}
+\NormalTok{merged\_seurat }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(merged\_seurat, }\AttributeTok{subset =}\NormalTok{ nFeature\_RNA }\SpecialCharTok{\textgreater{}} \DecValTok{200} \SpecialCharTok{\&}\NormalTok{ nFeature\_RNA }\SpecialCharTok{\textless{}} \DecValTok{6000} \SpecialCharTok{\&}\NormalTok{ percent.mt }\SpecialCharTok{\textless{}} \DecValTok{15}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{3.2 Normalize Data and Perform
+PCA/UMAP}\label{normalize-data-and-perform-pcaumap}
+
+We normalize the data using SCTransform, perform principal component
+analysis (PCA) to reduce dimensionality, and then generate a UMAP for
+visualization.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Normalize data and regress out the mitochondrial percentage using SCTransform}
+\NormalTok{merged\_seurat }\OtherTok{\textless{}{-}} \FunctionTok{SCTransform}\NormalTok{(merged\_seurat, }\AttributeTok{vars.to.regress =} \StringTok{"percent.mt"}\NormalTok{, }\AttributeTok{verbose =} \ConstantTok{FALSE}\NormalTok{)}
+
+\CommentTok{\# Perform PCA on the normalized data}
+\NormalTok{merged\_seurat }\OtherTok{\textless{}{-}} \FunctionTok{RunPCA}\NormalTok{(merged\_seurat, }\AttributeTok{assay =} \StringTok{"SCT"}\NormalTok{, }\AttributeTok{verbose =} \ConstantTok{FALSE}\NormalTok{)}
+
+\CommentTok{\# Generate a UMAP embedding for visualization of the data structure}
+\NormalTok{merged\_seurat }\OtherTok{\textless{}{-}} \FunctionTok{RunUMAP}\NormalTok{(merged\_seurat, }\AttributeTok{dims =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{30}\NormalTok{, }\AttributeTok{verbose =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: The default method for RunUMAP has changed from calling Python UMAP via reticulate to the R-native UWOT using the cosine metric
+## To use Python UMAP via reticulate, set umap.method to 'umap-learn' and metric to 'correlation'
+## This message will be shown once per session
+\end{verbatim}
+
+\section{4. Batch Effect Correction}\label{batch-effect-correction}
+
+Correct for batch effects (e.g., differences across samples) using
+Harmony, then update UMAP visualization.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Correct batch effects based on the \textquotesingle{}sample\textquotesingle{} metadata column using Harmony}
+\NormalTok{merged\_seurat }\OtherTok{\textless{}{-}} \FunctionTok{RunHarmony}\NormalTok{(merged\_seurat, }\AttributeTok{group.by.vars =} \StringTok{"sample"}\NormalTok{, }\AttributeTok{verbose =} \ConstantTok{FALSE}\NormalTok{)}
+
+\CommentTok{\# Update the UMAP embedding after Harmony correction}
+\NormalTok{merged\_seurat }\OtherTok{\textless{}{-}} \FunctionTok{RunUMAP}\NormalTok{(merged\_seurat, }\AttributeTok{dims =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{30}\NormalTok{, }\AttributeTok{verbose =} \ConstantTok{FALSE}\NormalTok{)}
+
+\CommentTok{\# Visualize the data colored by sample to check for batch correction}
+\FunctionTok{DimPlot}\NormalTok{(merged\_seurat, }\AttributeTok{reduction =} \StringTok{"umap"}\NormalTok{, }\AttributeTok{group.by =} \StringTok{"sample"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{scRNA_FSHD_analysis_files/figure-latex/batch_effect_correction-1.pdf}
+
+\section{5. Clustering and Cell Type
+Identification}\label{clustering-and-cell-type-identification}
+
+\subsubsection{5.1 Clustering on Batch-Corrected
+Data}\label{clustering-on-batch-corrected-data}
+
+Perform clustering on the Harmony-corrected data. This involves
+re-running UMAP using the Harmony reduction, identifying cell neighbors,
+and clustering cells.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Generate UMAP using Harmony reduction}
+\NormalTok{merged\_seurat }\OtherTok{\textless{}{-}} \FunctionTok{RunUMAP}\NormalTok{(merged\_seurat, }\AttributeTok{reduction =} \StringTok{"harmony"}\NormalTok{, }\AttributeTok{dims =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{20}\NormalTok{, }\AttributeTok{verbose =} \ConstantTok{FALSE}\NormalTok{)}
+
+\CommentTok{\# Identify cell neighbors and perform clustering}
+\NormalTok{merged\_seurat }\OtherTok{\textless{}{-}} \FunctionTok{FindNeighbors}\NormalTok{(merged\_seurat, }\AttributeTok{reduction =} \StringTok{"harmony"}\NormalTok{, }\AttributeTok{dims =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{20}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Computing nearest neighbor graph
+\end{verbatim}
+
+\begin{verbatim}
+## Computing SNN
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{merged\_seurat }\OtherTok{\textless{}{-}} \FunctionTok{FindClusters}\NormalTok{(merged\_seurat, }\AttributeTok{resolution =} \FloatTok{0.5}\NormalTok{, }\AttributeTok{verbose =} \ConstantTok{FALSE}\NormalTok{)}
+
+\CommentTok{\# Visualize clusters and sample distribution on UMAP}
+\FunctionTok{DimPlot}\NormalTok{(merged\_seurat, }\AttributeTok{reduction =} \StringTok{"umap"}\NormalTok{, }\AttributeTok{group.by =} \StringTok{"sample"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{scRNA_FSHD_analysis_files/figure-latex/clustering-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{DimPlot}\NormalTok{(merged\_seurat, }\AttributeTok{reduction =} \StringTok{"umap"}\NormalTok{, }\AttributeTok{group.by =} \StringTok{"seurat\_clusters"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{scRNA_FSHD_analysis_files/figure-latex/clustering-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Define marker genes}
+\NormalTok{myogenic\_markers }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"MYF5"}\NormalTok{, }\StringTok{"MYOD1"}\NormalTok{, }\StringTok{"MYOG"}\NormalTok{, }\StringTok{"MYH3"}\NormalTok{)  }\CommentTok{\# Myogenesis markers}
+\NormalTok{fibroblast\_markers }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"ANPEP"}\NormalTok{, }\StringTok{"COL1A2"}\NormalTok{, }\StringTok{"VIM"}\NormalTok{)  }\CommentTok{\# Fibroblast markers}
+
+\CommentTok{\# Generate UMAP plots}
+\NormalTok{p1 }\OtherTok{\textless{}{-}} \FunctionTok{FeaturePlot}\NormalTok{(merged\_seurat, }\AttributeTok{features =}\NormalTok{ myogenic\_markers, }\AttributeTok{cols =} \FunctionTok{c}\NormalTok{(}\StringTok{"lightgray"}\NormalTok{, }\StringTok{"blue"}\NormalTok{), }\AttributeTok{min.cutoff =} \StringTok{"q10"}\NormalTok{, }\AttributeTok{max.cutoff =} \StringTok{"q90"}\NormalTok{, }\AttributeTok{reduction =} \StringTok{"umap"}\NormalTok{)}
+
+\NormalTok{p1}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{scRNA_FSHD_analysis_files/figure-latex/clustering-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p2 }\OtherTok{\textless{}{-}} \FunctionTok{FeaturePlot}\NormalTok{(merged\_seurat, }\AttributeTok{features =}\NormalTok{ fibroblast\_markers, }\AttributeTok{cols =} \FunctionTok{c}\NormalTok{(}\StringTok{"lightgray"}\NormalTok{, }\StringTok{"red"}\NormalTok{), }\AttributeTok{min.cutoff =} \StringTok{"q10"}\NormalTok{, }\AttributeTok{max.cutoff =} \StringTok{"q90"}\NormalTok{, }\AttributeTok{reduction =} \StringTok{"umap"}\NormalTok{)}
+
+\NormalTok{p2}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{scRNA_FSHD_analysis_files/figure-latex/clustering-4.pdf}
+
+\subsubsection{5.2 Differential Expression
+Analysis}\label{differential-expression-analysis}
+
+Before comparing FSHD and Control samples, set the active cell identity
+to the \texttt{condition} metadata column. Then, perform differential
+expression analysis between the \texttt{"FSHD1"} and \texttt{"Control"}
+groups.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Set the active identity to the \textquotesingle{}condition\textquotesingle{} column for differential expression}
+\FunctionTok{Idents}\NormalTok{(merged\_seurat) }\OtherTok{\textless{}{-}}\NormalTok{ merged\_seurat}\SpecialCharTok{$}\NormalTok{condition}
+
+\CommentTok{\# Prepare the object for differential expression analysis using SCT assay}
+\NormalTok{merged\_seurat }\OtherTok{\textless{}{-}} \FunctionTok{PrepSCTFindMarkers}\NormalTok{(merged\_seurat, }\AttributeTok{assay =} \StringTok{"SCT"}\NormalTok{, }\AttributeTok{verbose =} \ConstantTok{FALSE}\NormalTok{)}
+
+\CommentTok{\# Now perform differential expression analysis comparing FSHD2 versus Control using the SCT assay}
+\NormalTok{de\_genes }\OtherTok{\textless{}{-}} \FunctionTok{FindMarkers}\NormalTok{(merged\_seurat, }\AttributeTok{ident.1 =} \StringTok{"FSHD"}\NormalTok{, }\AttributeTok{ident.2 =} \StringTok{"Control"}\NormalTok{, }\AttributeTok{assay =} \StringTok{"SCT"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## For a (much!) faster implementation of the Wilcoxon Rank Sum Test,
+## (default method for FindMarkers) please install the presto package
+## --------------------------------------------
+## install.packages('devtools')
+## devtools::install_github('immunogenomics/presto')
+## --------------------------------------------
+## After installation of presto, Seurat will automatically use the more 
+## efficient implementation (no further action necessary).
+## This message will be shown once per session
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Display the top differentially expressed genes}
+\FunctionTok{head}\NormalTok{(de\_genes)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        p_val avg_log2FC pct.1 pct.2 p_val_adj
+## RPL36A     0   1.387597 0.957 0.688         0
+## RPS21      0   1.788058 0.959 0.698         0
+## RPS29      0   1.460634 0.936 0.711         0
+## RPL38      0   1.438665 0.972 0.818         0
+## RPL23      0   1.272439 0.992 0.867         0
+## RPS10      0   1.130713 0.988 0.894         0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Extract top differentially expressed genes (e.g., top 5 genes based on log2FC)}
+\NormalTok{top\_de\_genes }\OtherTok{\textless{}{-}} \FunctionTok{rownames}\NormalTok{(de\_genes[}\FunctionTok{order}\NormalTok{(de\_genes}\SpecialCharTok{$}\NormalTok{avg\_log2FC, }\AttributeTok{decreasing =} \ConstantTok{TRUE}\NormalTok{), ])[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{]}
+
+\CommentTok{\# Generate UMAP feature plots for the top DE genes}
+\NormalTok{p\_de }\OtherTok{\textless{}{-}} \FunctionTok{FeaturePlot}\NormalTok{(merged\_seurat, }\AttributeTok{features =}\NormalTok{ top\_de\_genes, }\AttributeTok{cols =} \FunctionTok{c}\NormalTok{(}\StringTok{"lightgray"}\NormalTok{, }\StringTok{"purple"}\NormalTok{), }
+                    \AttributeTok{min.cutoff =} \StringTok{"q10"}\NormalTok{, }\AttributeTok{max.cutoff =} \StringTok{"q90"}\NormalTok{, }\AttributeTok{reduction =} \StringTok{"umap"}\NormalTok{)}
+
+\CommentTok{\# Display the plots}
+\NormalTok{p\_de}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{scRNA_FSHD_analysis_files/figure-latex/differential_expression-1.pdf}
+
+\subsubsection{5.3 Pathway Enrichment
+Analysis}\label{pathway-enrichment-analysis}
+
+Using the differentially expressed genes, we create a ranked gene list
+and perform gene set enrichment analysis (GSEA) for Gene Ontology
+Biological Processes (GO BP).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create a ranked list of genes based on average log2 fold{-}change}
+\NormalTok{gene\_list }\OtherTok{\textless{}{-}}\NormalTok{ de\_genes}\SpecialCharTok{$}\NormalTok{avg\_log2FC}
+\FunctionTok{names}\NormalTok{(gene\_list) }\OtherTok{\textless{}{-}} \FunctionTok{rownames}\NormalTok{(de\_genes)}
+\NormalTok{gene\_list }\OtherTok{\textless{}{-}} \FunctionTok{sort}\NormalTok{(gene\_list, }\AttributeTok{decreasing =} \ConstantTok{TRUE}\NormalTok{)}
+
+\CommentTok{\# Perform GSEA on GO Biological Process terms}
+\NormalTok{go\_enrichment }\OtherTok{\textless{}{-}} \FunctionTok{gseGO}\NormalTok{(}\AttributeTok{geneList =}\NormalTok{ gene\_list,}
+                       \AttributeTok{ont =} \StringTok{"BP"}\NormalTok{,}
+                       \AttributeTok{keyType =} \StringTok{"SYMBOL"}\NormalTok{,}
+                       \AttributeTok{minGSSize =} \DecValTok{10}\NormalTok{,}
+                       \AttributeTok{maxGSSize =} \DecValTok{500}\NormalTok{,}
+                       \AttributeTok{pvalueCutoff =} \FloatTok{0.05}\NormalTok{,}
+                       \AttributeTok{verbose =} \ConstantTok{FALSE}\NormalTok{,}
+                       \AttributeTok{OrgDb =}\NormalTok{ org.Hs.eg.db,}
+                       \AttributeTok{pAdjustMethod =} \StringTok{"BH"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in preparePathwaysAndStats(pathways, stats, minSize, maxSize, gseaParam, : There are ties in the preranked stats (18.83% of the list).
+## The order of those tied genes will be arbitrary, which may produce unexpected results.
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in fgseaMultilevel(pathways = pathways, stats = stats, minSize =
+## minSize, : There were 9 pathways for which P-values were not calculated
+## properly due to unbalanced (positive and negative) gene-level statistic values.
+## For such pathways pval, padj, NES, log2err are set to NA. You can try to
+## increase the value of the argument nPermSimple (for example set it nPermSimple
+## = 10000)
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in fgseaMultilevel(pathways = pathways, stats = stats, minSize =
+## minSize, : For some of the pathways the P-values were likely overestimated. For
+## such pathways log2err is set to NA.
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in fgseaMultilevel(pathways = pathways, stats = stats, minSize =
+## minSize, : For some pathways, in reality P-values are less than 0.0000000001.
+## You can set the `eps` argument to zero for better estimation.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Visualize the top enriched pathways using a dot plot}
+\FunctionTok{dotplot}\NormalTok{(go\_enrichment, }\AttributeTok{showCategory =} \DecValTok{20}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{scRNA_FSHD_analysis_files/figure-latex/pathway_enrichment-1.pdf}
+
+\subsubsection{5.4 Cell Type Annotation with
+SingleR}\label{cell-type-annotation-with-singler}
+
+Annotate cell types using the SingleR package and the Human Primary Cell
+Atlas as a reference.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Load reference dataset for cell type annotation}
+\NormalTok{ref }\OtherTok{\textless{}{-}} \FunctionTok{HumanPrimaryCellAtlasData}\NormalTok{()}
+
+\CommentTok{\# Annotate cell types using SingleR on RNA assay data}
+\NormalTok{predictions }\OtherTok{\textless{}{-}} \FunctionTok{SingleR}\NormalTok{(}\AttributeTok{test =} \FunctionTok{GetAssayData}\NormalTok{(merged\_seurat, }\AttributeTok{assay =} \StringTok{"RNA"}\NormalTok{),}
+                       \AttributeTok{ref =}\NormalTok{ ref,}
+                       \AttributeTok{labels =}\NormalTok{ ref}\SpecialCharTok{$}\NormalTok{label.main)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in GetAssayData.StdAssay(object = object[[assay]], layer = layer): data
+## layer is not found and counts layer is used
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Add the predicted cell type labels to the Seurat object metadata}
+\NormalTok{merged\_seurat}\SpecialCharTok{$}\NormalTok{SingleR.labels }\OtherTok{\textless{}{-}}\NormalTok{ predictions}\SpecialCharTok{$}\NormalTok{labels}
+
+\CommentTok{\# Visualize the annotated cell types on UMAP}
+\FunctionTok{DimPlot}\NormalTok{(merged\_seurat, }\AttributeTok{reduction =} \StringTok{"umap"}\NormalTok{, }\AttributeTok{group.by =} \StringTok{"SingleR.labels"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{scRNA_FSHD_analysis_files/figure-latex/cell_type_annotation-1.pdf}
+
+\section{Conclusion}\label{conclusion}
+
+This analysis provides insights into the transcriptomic differences
+between FSHD patient samples and healthy controls. Through data
+normalization, batch effect correction, clustering, differential
+expression, pathway enrichment analysis, and cell type annotation, we
+have highlighted key molecular pathways and cell populations. Future
+work could include integrating multi-omics data to further elucidate the
+mechanisms underlying FSHD.
+
+\end{document}
