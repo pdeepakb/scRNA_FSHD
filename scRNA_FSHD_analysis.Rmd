@@ -1,6 +1,6 @@
 ---
 title: "Single-cell RNA Analysis of FSHD Muscle Biopsy Samples"
-author: "Analyst"
+author: "Deepak Poduval"
 date: "`r Sys.Date()`"
 output:
   html_document:
